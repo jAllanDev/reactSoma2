@@ -17,7 +17,7 @@ export default function App() {
       <Text style={styles.title}>Soma de dois números</Text>
       <TextInputBox value={number1}
         onChangeText={setNumber1}
-        placeholder="Digite o primeiro número"
+        placeholder="Digite o primeiro número (gitcommit test)"
         keyboardType="numeric"
       />
       <TextInputBox value={number2}
