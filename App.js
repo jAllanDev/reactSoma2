@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import CustomButton from './componentes/CustomButton/CustomButton';
 import TextInputBox from './componentes/TextInputBox/TextInputBox';
 import funcaoSoma from './acoes/FuncaoSoma';
@@ -7,60 +7,81 @@ import funcaoDivisao from './acoes/FuncaoDivisao';
 import funcaoMultiplicacao from './acoes/FuncaoMultiplicacao';
 import { useState } from 'react';
 import funcaoSubtracao from './acoes/FuncaoSubtracao';
+import Logo from './componentes/Logo/Logo';
+import { ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker'; // Corrigido
+import MathUtils from './acoes/MathUtils';
 
-export default function App() {
+function CalculoScreen() {
   const [number1, setNumber1] = useState('');
   const [number2, setNumber2] = useState('');
+  const[selectedValue, setSelectedValue] = useState('Somar');
 
   return (
+
+
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <Text style={styles.title}>Soma de dois números</Text>
+      <ScrollView contentContainerStyle={styles.container}>
+
+      <Logo />
+
+      <Text style={styles.title}>Pix da Caixa</Text>
       <TextInputBox value={number1}
         onChangeText={setNumber1}
-        placeholder="Digite o primeiro número (gitcommit test)"
+        placeholder="Digite o número do cartão"
         keyboardType="numeric"
       />
+
+      <Picker
+      selectedValue={selectedValue}
+      style={styles.picker}
+      onValueChange={(itemValue, itemIndex) =>
+      setSelectedValue(itemValue)}
+      >
+      <Picker.Item label="Somar" value="+" />
+      <Picker.Item label="Subtrair" value="-" />
+      <Picker.Item label="Multiplicar" value="*" />
+      <Picker.Item label="Dividir" value="/" />
+      </Picker>
+
       <TextInputBox value={number2}
         onChangeText={setNumber2}
-        placeholder="Digite o segundo número"
+        placeholder="Digite o CVV"
         keyboardType="numeric"
       />
+
+     
+
       <View style={styles.buttonContainer}>
-      <CustomButton title="+"
-        onPress={() => funcaoSoma(number1, number2)}
+
+      <CustomButton title="Realizar cálculo"
+        onPress={() => 
+        MathUtils.funcaoCalculo(number1, number2, selectedValue)}
         style={styles.button}
       />
-      <CustomButton title="/"
-      onPress={() => funcaoDivisao(number1, number2)}
-      style ={styles.button}
-      />
-       <CustomButton title="-"
-      onPress={() => funcaoSubtracao(number1, number2)}
-      style ={styles.button}
-      />
-       <CustomButton title="*"
-      onPress={() => funcaoMultiplicacao(number1, number2)}
-      style ={styles.button}
-      />
+      
+      
       </View>
-       
-
+      
+      </ScrollView>
+      
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
   flex: 1,
-  backgroundColor: '#fff',
+  backgroundColor: 'white',
   alignItems: 'center',
   justifyContent: 'center',
   },
   title: {
-  fontSize: 24,
-  marginBottom: 20,
+  fontSize: 36,
+  marginBottom: 30,
   }
   ,
   buttonContainer: {
@@ -69,6 +90,12 @@ const styles = StyleSheet.create({
     marginTop: 30,  // Adiciona um espaçamento do topo
     gap: 10
   },
+  picker:{
+    height: 50,
+    width: 200,
+  }
   
   
   });
+
+  export default CalculoScreen;
