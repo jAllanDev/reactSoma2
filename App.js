@@ -9,13 +9,13 @@ import { useState } from 'react';
 import funcaoSubtracao from './acoes/FuncaoSubtracao';
 import Logo from './componentes/Logo/Logo';
 import { ScrollView } from 'react-native';
-import { Picker } from '@react-native-picker/picker'; // Corrigido
+import { Picker } from '@react-native-picker/picker'; 
 import MathUtils from './acoes/MathUtils';
 
 function CalculoScreen() {
   const [number1, setNumber1] = useState('');
   const [number2, setNumber2] = useState('');
-  const[selectedValue, setSelectedValue] = useState('Somar');
+  const [selectedValue, setSelectedValue] = useState("+"); 
 
   return (
 
@@ -27,10 +27,10 @@ function CalculoScreen() {
 
       <Logo />
 
-      <Text style={styles.title}>Pix da Caixa</Text>
+      <Text style={styles.title}>Calculadora</Text>
       <TextInputBox value={number1}
         onChangeText={setNumber1}
-        placeholder="Digite o número do cartão"
+        placeholder="Digite o primeiro número"
         keyboardType="numeric"
       />
 
@@ -48,7 +48,7 @@ function CalculoScreen() {
 
       <TextInputBox value={number2}
         onChangeText={setNumber2}
-        placeholder="Digite o CVV"
+        placeholder="Digite o segundo número"
         keyboardType="numeric"
       />
 
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   fontSize: 36,
   marginBottom: 30,
   }
+  
   ,
   buttonContainer: {
     flexDirection: "row",  // Alinha os botões na horizontal
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
     gap: 10
   },
   picker:{
-    height: 50,
-    width: 200,
+    height: 20,
+    width: 100,
   }
   
   

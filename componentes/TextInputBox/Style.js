@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
 input: {
-height: 40,
+height: 38,
 borderColor: '#ccc',
-borderWidth: 1,
-borderRadius: 5,
+borderWidth: 2,
+borderRadius: 6,
 paddingHorizontal: 10,
 marginVertical: 10,
-width: '80%',
+width: '100%',
 },
 });

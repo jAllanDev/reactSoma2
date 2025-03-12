@@ -4,7 +4,7 @@ import Styles from './Style'
 function Logo() {return (
 <Image
 style={Styles.logo}
-source={require('../../images/images.png')}
+source={require('../../images/logo.png')}
 />
 );
 }
