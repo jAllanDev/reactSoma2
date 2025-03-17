@@ -5,6 +5,7 @@ import CustomButton from '../../componentes/CustomButton/CustomButton';
 import TextInputBox from '../../componentes/TextInputBox/TextInputBox';
 import { Picker } from '@react-native-picker/picker';
 import MathUtils from '../../acoes/MathUtils';
+import funcaoIMC from '../../acoes/FuncaoIMC';
 export default function CalculoScreen() {
     const [number1, setNumber1] = useState('');
     const [number2, setNumber2] = useState('');
@@ -30,7 +31,7 @@ export default function CalculoScreen() {
             <CustomButton
                 title="Calcular IMC"
                 onPress={() =>
-                    MathUtils.funcaoCalculo(number1, number2, selectedValue)}
+                    funcaoIMC(number1, number2)}
                 style={styles.button}
             />
 
